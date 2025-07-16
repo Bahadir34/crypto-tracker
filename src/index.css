@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  button{
+    @apply cursor-pointer
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto sm:px-6 lg:px-8 px-4;
+  }
+}
+
+@theme {
+  --animate-spin: spin 700ms linear infinite;
+   
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
