@@ -1,10 +1,9 @@
 import { Star, TrendingDown, TrendingUp } from "lucide-react";
 import React from "react";
 import { formatBigNumber, formatPrice } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 const CoinCard = ({ coin }) => {
-  console.log(coin);
-
   // fiyat degisikligi negatif mi?
   const isPositive = coin.price_change_percentage_24h >= 0;
 
@@ -49,9 +48,12 @@ const CoinCard = ({ coin }) => {
       value: <p className="text-sm">${formatBigNumber(coin.total_volume)}</p>,
     },
   ];
-
+ 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shodow-lg hover:shadow-xl p-6 cursor-pointer hover:scale-105 transform  transition duration-300 ">
+    <Link
+      to={`/coin/${coin.id}`}
+      className="bg-white dark:bg-gray-800 rounded-lg shodow-lg hover:shadow-xl p-6 cursor-pointer hover:scale-105 transform  transition duration-300 "
+    >
       {/* ust kisim */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2">
@@ -89,7 +91,7 @@ const CoinCard = ({ coin }) => {
             <span className="text-sm text-gray-600 dark:text-gray-400">
               {item.label}
             </span>
-            <p className="text-gray-900 dark:text-white">{item.value}</p>
+            {item.value}
           </div>
         ))}
       </div>
@@ -108,7 +110,7 @@ const CoinCard = ({ coin }) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

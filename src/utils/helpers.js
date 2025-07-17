@@ -3,13 +3,13 @@ export const formatPrice = (price) => {
   if (!price) return "N/A";
 
   if (price < 0.01) {
-    return `$${price.toFixed(6)}`;
+    return `$ ${price.toFixed(6)}`;
   } else if (price < 1) {
-    return `$${price.toFixed(4)}`;
+    return `$ ${price.toFixed(4)}`;
   } else if (price < 100) {
-    return `$${price.toFixed(2)}`;
+    return `$ ${price.toFixed(2)}`;
   } else {
-    return `$${price.toLocaleString()}`; // sayiyi virgullu yazsin diye toLocalString() kullandik.
+    return `$ ${price.toLocaleString()}`; // sayiyi virgullu yazsin diye toLocalString() kullandik.
   }
 };
 

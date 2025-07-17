@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { coinApi } from "../../services/coinService";
 import Error from "../../components/error";
 import SearchBar from "../../components/home/searchBar";
@@ -13,6 +13,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState();
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchCoins = useCallback((isRefresh = false) => {
     isRefresh ? setRefreshing(true) : setLoading(true);
@@ -36,7 +37,7 @@ const Home = () => {
   useEffect(() => {
     const id = setInterval(() => {
       fetchCoins(true);
-    }, 10000);
+    }, 60000);
 
     // performans icin onemli bir noktadir, komponent ekrandan kayboldugu zaman intervali durdur
     return () => {
@@ -44,10 +45,23 @@ const Home = () => {
     };
   }, []);
 
+  // coin veya aratilan kelime her degistiginde filtrele
+  const filteredCoins = useMemo(() => {
+    if (!searchTerm.trim()) return coins;
+
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [coins, searchTerm]);
+
+  const onSearch = useCallback((t) => setSearchTerm(t), []);
+
   if (error) return <Error message={error} refetch={fetchCoins} />;
 
   return (
-    <div className="space-y-6">
+    <div className=" space-y-6">
       {/* Baslik */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
         <div>
@@ -60,8 +74,8 @@ const Home = () => {
         </div>
 
         {/* arama ve yenileme */}
-        <div className="flex items-center space-x-4">
-          <SearchBar />
+        <div className="flex items-center  space-x-4 gap-5">
+          <SearchBar onSearch={onSearch} />
           <button
             onClick={() => {
               fetchCoins(true);
@@ -104,7 +118,7 @@ const Home = () => {
         <Loader />
       ) : (
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {coins?.map((coin) => (
+          {filteredCoins?.map((coin) => (
             <CoinCard key={coin.id} coin={coin} />
           ))}
         </div>

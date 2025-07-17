@@ -2,8 +2,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  button{
-    @apply cursor-pointer
+  button {
+    @apply cursor-pointer;
   }
 }
 
@@ -11,11 +11,14 @@
   .container {
     @apply max-w-7xl mx-auto sm:px-6 lg:px-8 px-4;
   }
+
+  .detail-container {
+    @apply bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700;
+  }
 }
 
 @theme {
   --animate-spin: spin 700ms linear infinite;
-   
 
   @keyframes spin {
     from {
@@ -26,3 +29,4 @@
     }
   }
 }
+ 
