@@ -1,12 +1,34 @@
-# React + Vite
+# CRYPTO-TRACKER
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CRYPTO-TRACKER, kripto para piyasasını gerçek zamanlı olarak takip edebileceğiniz bir web uygulamasıdır. CoinGecko API kullanılarak geliştirilmiş bu proje, kullanıcıya güncel kripto para bilgilerini sunar. Projede dark-light mode seçimi özelliği de vardır.
 
-Currently, two official plugins are available:
+## 🔗 Canlı API Kaynağı
+[CoinGecko API v3.0.1](https://docs.coingecko.com/v3.0.1/reference/introduction)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Özellikler
+- Gerçek zamanlı veri çekme
+- Grafiklerle piyasa trendi takibi
+- Arayüzde gezinme (SPA)
+- Responsiveness (mobil uyumlu tasarım)
 
-## Expanding the ESLint configuration
+## 🛠️ Kullanılan Teknolojiler ve Kütüphaneler
+- **React**
+- **Tailwind CSS** – stil oluşturma
+- **Axios** – HTTP istekleri
+- **Chart.js** – grafik oluşturma
+- **Lucide-react** – ikonlar
+- **React Router DOM** – sayfalar arası gezinme
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🖼️ Proje Önizlemesi
+
+![](./public/project-views/crypto-tracker-desktop.png)
+![](./public/project-views/crypto-tracker-mobile.png)
+![](./public/project-views/crypto-tracker.gif)
+
+## 📁 Kurulum Talimatları
+
+1. Bu repoyu klonlayın:
+   ```bash
+   git clone https://github.com/Bahadir34/CRYPTO-TRACKER.git
+   cd CRYPTO-TRACKER

@@ -4,7 +4,7 @@ const apiClient = axios.create({
   baseURL: "https://api.coingecko.com/api/v3",
   headers: {
     accept: "application/json",
-    "Content-Type": "application/json",
+
     "x-cg-demo-api-key": import.meta.env.VITE_API_KEY,
   },
 });
